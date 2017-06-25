@@ -36,7 +36,13 @@ public class MainActivity extends AppCompatActivity {
         String name = mEtInfo.getText().toString().trim();
         ProjectDao dao = new ProjectDao(MainActivity.this);
         Project projectByName = dao.getProjectByName(name);
-        String ed = projectByName.toString();
-        mEtInfo.setText(ed);
+        if(projectByName!=null){
+            String ed = projectByName.toString();
+            if(ed!=null){
+                mEtInfo.setText(ed);
+            }
+        } else{
+            mEtInfo.setText("没有数据");
+        }
     }
 }
